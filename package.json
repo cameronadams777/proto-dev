@@ -1,6 +1,7 @@
 {
   "name": "fiddle-native",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "A Quasar Framework application for offline web development",
   "productName": "Fiddle Native",
   "cordovaId": "org.fiddle.native.app",
