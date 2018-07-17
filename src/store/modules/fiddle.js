@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { remote } from 'electron'
+import { Notify } from 'quasar'
 import saveFolderDialog from '../../helpers/save-folder-dialog'
 import openFolderDialog from '../../helpers/open-folder.dialog'
 
@@ -64,9 +65,9 @@ export default {
           // any directories. Return to prevent any errors from occurring.
           if (filePaths === undefined) return
 
-          const fileName = filePaths[0]
+          const selectedFilePath = filePaths[0]
           // Read a file in from the file path selected by the user.
-          fs.readFile(fileName, 'utf-8', (error, data) => {
+          fs.readFile(selectedFilePath, 'utf-8', (error, data) => {
             // If an error occurs, log it in the console and return
             // so that no other errors can occur.
             if (error) {
@@ -93,6 +94,13 @@ export default {
             // appears to be in the correct format. Go ahead and update the
             // current fiddle with the data we loaded.
             dispatch('updateFiddle', parsedData)
+
+            Notify.create({
+              message: `Fiddle Opened!`,
+              color: 'primary',
+              position: 'bottom-right',
+              timeout: 1500
+            })
           })
         }
       })
@@ -111,7 +119,16 @@ export default {
         state.fiddle.fileDirectory,
         JSON.stringify(state.fiddle, null, 2),
         error => {
-          if (error) console.error(error)
+          if (error) {
+            console.error(error)
+            return
+          }
+          Notify.create({
+            message: 'Fiddle Saved!',
+            color: 'primary',
+            position: 'bottom-right',
+            timeout: 1500
+          })
         }
       )
     },
