@@ -18,12 +18,6 @@ export default {
     ipc.on('save-fiddle', this.saveFiddle)
     ipc.on('save-new-fiddle', this.saveNewFiddle)
   },
-  beforeDestroy () {
-    ipc.on('create-new-fiddle', this.resetFiddle)
-    ipc.on('open-fiddle', this.openFiddle)
-    ipc.on('save-fiddle', this.saveFiddle)
-    ipc.on('save-new-fiddle', this.saveNewFiddle)
-  },
   methods: {
     ...fiddleActions
   }

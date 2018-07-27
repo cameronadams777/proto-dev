@@ -6,7 +6,6 @@
       :options="cmOptions"
       @input="updateFiddle({ htmlCode: $event })"
     />
-    <span class="language-label">HTML</span>
   </div>
 </template>
 
@@ -42,23 +41,10 @@ export default {
 <style>
 .editor-container {
   position: relative;
+  height: 100%;
 }
 
 .editor {
   height: 100%;
-}
-
-.language-label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 50px;
-  margin: 5px;
-  padding: 5px;
-  color: grey;
-  text-align: center;
-  border-style: solid;
-  border-radius: 5px;
-  border-width: 1px;
 }
 </style>

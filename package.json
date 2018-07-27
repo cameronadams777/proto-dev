@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "vue-codemirror": "^4.0.5"
+    "vue-codemirror": "^4.0.5",
+    "vue-electron": "^1.0.6"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

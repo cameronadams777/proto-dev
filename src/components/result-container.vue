@@ -1,19 +1,14 @@
 <template>
-  <div>
+  <div class="results-container">
     <iframe
-      ref="iframe"
-      style="width: 100%; height: 100%; border-style: solid; border-width: 1px; border-color: #b4b4b4;"
+      id="iframe"
+      class="results"
     />
-    <button
-      class="run-button"
-      @click="updateView"
-    >
-      Run
-    </button>
   </div>
 </template>
 
 <script>
+import { ipcRenderer as ipc } from 'electron'
 import { fiddleGetters } from '../store/helpers'
 export default {
   computed: {
@@ -22,10 +17,13 @@ export default {
   mounted () {
     this.updateView()
   },
+  created () {
+    ipc.on('run-fiddle', this.updateView)
+  },
   methods: {
     updateView () {
       let doc
-      const iframe = this.$refs.iframe
+      const iframe = document.getElementById('iframe')
       // eslint-disable-next-line
       const results = '<html><head><style>' + this.fiddle.cssCode + '</style></head><body>' + this.fiddle.htmlCode + '<script type="text/javascript">' + this.fiddle.javascriptCode + '<\/script></body></html>'
 
@@ -42,16 +40,13 @@ export default {
 </script>
 
 <style>
-.run-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 5px;
-  width: 100px;
-  height: 50px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  background-color: white;
+.results-container {
+  height: 100%;
+}
+
+.results {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #beb1b1;
 }
 </style>
