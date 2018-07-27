@@ -41,9 +41,10 @@ export default {
 .editor-container {
   position: relative;
   border: 1px solid #beb1b1;
+  height: 100%;
 }
 
-.CodeMirror {
+.editor {
   height: 100%;
 }
 </style>

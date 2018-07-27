@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { remote } from 'electron'
 export default {
   name: 'LayoutDefault',
   data () {
@@ -35,7 +36,7 @@ export default {
   },
   methods: {
     runFiddle () {
-      this.$electron.remote
+      remote
         .getCurrentWindow()
         .webContents
         .send('run-fiddle')

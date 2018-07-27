@@ -4,9 +4,13 @@
       <HTMLEditor v-if="currentType === 'html'"/>
       <JavaScriptEditor v-if="currentType === 'js'"/>
       <CSSEditor v-if="currentType === 'css'"/>
-      <ResultContainer v-if="currentType === 'results'"/>
+      <ResultContainer v-if="currentType === 'output'"/>
     </div>
-    <span class="language-label">{{ formattedCurrentType }}</span>
+    <q-select
+      v-model="currentType"
+      class="language-label"
+     :options="types"
+    />
   </div>
 </template>
 
@@ -30,7 +34,24 @@ export default {
   },
   data () {
     return {
-      types: ['html', 'css', 'js', 'console', 'output'],
+      types: [
+        {
+          label: 'HTML',
+          value: 'html'
+        },
+        {
+          label: 'JavaScript',
+          value: 'js'
+        },
+        {
+          label: 'CSS',
+          value: 'css'
+        },
+        {
+          label: 'Output',
+          value: 'output'
+        }
+      ],
       currentType: this.initialType
     }
   },

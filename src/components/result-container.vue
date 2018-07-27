@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="results-container">
     <iframe
-      ref="iframe"
-      style="width: 100%; height: 100%; border-style: solid; border-width: 1px; border-color: #b4b4b4;"
+      id="iframe"
+      class="results"
     />
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
   methods: {
     updateView () {
       let doc
-      const iframe = this.$refs.iframe
+      const iframe = document.getElementById('iframe')
       // eslint-disable-next-line
       const results = '<html><head><style>' + this.fiddle.cssCode + '</style></head><body>' + this.fiddle.htmlCode + '<script type="text/javascript">' + this.fiddle.javascriptCode + '<\/script></body></html>'
 
@@ -38,3 +38,15 @@ export default {
   }
 }
 </script>
+
+<style>
+.results-container {
+  height: 100%;
+}
+
+.results {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #beb1b1;
+}
+</style>
