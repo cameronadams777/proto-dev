@@ -4,16 +4,11 @@
       ref="iframe"
       style="width: 100%; height: 100%; border-style: solid; border-width: 1px; border-color: #b4b4b4;"
     />
-    <button
-      class="run-button"
-      @click="updateView"
-    >
-      Run
-    </button>
   </div>
 </template>
 
 <script>
+import { ipcRenderer as ipc } from 'electron'
 import { fiddleGetters } from '../store/helpers'
 export default {
   computed: {
@@ -21,6 +16,9 @@ export default {
   },
   mounted () {
     this.updateView()
+  },
+  created () {
+    ipc.on('run-fiddle', this.updateView)
   },
   methods: {
     updateView () {
@@ -40,18 +38,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.run-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 5px;
-  width: 100px;
-  height: 50px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  background-color: white;
-}
-</style>

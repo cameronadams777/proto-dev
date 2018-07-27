@@ -6,7 +6,6 @@
       :options="cmOptions"
       @input="updateFiddle({ cssCode: $event })"
     />
-    <span class="language-label">CSS</span>
   </div>
 </template>
 

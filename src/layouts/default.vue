@@ -8,25 +8,16 @@
           Fiddle Native
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
+
+        <q-btn
+          flat
+          round
+          @click="runFiddle"
+        >
+          <q-icon name="fas fa-chevron-right"/>
+        </q-btn>
       </q-toolbar>
     </q-layout-header>
-
-    <q-layout-drawer
-      v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
-    >
-      <q-list
-        no-border
-        link
-        inset-delimiter
-      >
-        <q-list-header>Essential Links</q-list-header>
-        <q-item @click.native="openURL('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
-        </q-item>
-      </q-list>
-    </q-layout-drawer>
 
     <q-page-container>
       <router-view />
@@ -35,8 +26,6 @@
 </template>
 
 <script>
-import { openURL } from 'quasar'
-
 export default {
   name: 'LayoutDefault',
   data () {
@@ -45,7 +34,12 @@ export default {
     }
   },
   methods: {
-    openURL
+    runFiddle () {
+      this.$electron.remote
+        .getCurrentWindow()
+        .webContents
+        .send('run-fiddle')
+    }
   }
 }
 </script>
