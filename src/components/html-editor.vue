@@ -1,7 +1,6 @@
 <template>
   <div class="editor-container">
     <codemirror
-      class="editor"
       :value="fiddle.htmlCode"
       :options="cmOptions"
       @input="updateFiddle({ htmlCode: $event })"
@@ -45,7 +44,11 @@ export default {
   height: 100%;
 }
 
-.editor {
+.vue-codemirror {
+  height: 100%;
+}
+
+.CodeMirror {
   height: 100%;
 }
 </style>

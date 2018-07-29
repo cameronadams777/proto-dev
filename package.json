@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "lodash": "^4.17.10",
     "vue-codemirror": "^4.0.5",
     "vue-electron": "^1.0.6"
   },

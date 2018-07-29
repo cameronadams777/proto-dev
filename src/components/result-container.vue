@@ -1,13 +1,12 @@
 <template>
-  <div class="results-container">
-    <iframe
-      id="iframe"
-      class="results"
-    />
-  </div>
+  <div
+    ref="container"
+    class="results-container"
+  />
 </template>
 
 <script>
+import uniqueId from 'lodash/uniqueId'
 import { ipcRenderer as ipc } from 'electron'
 import { fiddleGetters } from '../store/helpers'
 export default {
@@ -23,9 +22,12 @@ export default {
   methods: {
     updateView () {
       let doc
-      let iframe = document.getElementById('iframe')
+      let container = this.$refs.container
+      let iframeId = uniqueId('iframe_')
 
-      if (!iframe) return
+      container.innerHTML = `<iframe id="${iframeId}" class="results" />`
+
+      const iframe = document.getElementById(iframeId)
 
       // eslint-disable-next-line
       const results = '<html><head><style>' + this.fiddle.cssCode + '</style></head><body>' + this.fiddle.htmlCode + '<script type="text/javascript">' + this.fiddle.javascriptCode + '<\/script></body></html>'
