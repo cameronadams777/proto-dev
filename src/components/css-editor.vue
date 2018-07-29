@@ -40,6 +40,7 @@ export default {
 <style>
 .editor-container {
   position: relative;
+  border: 1px solid #beb1b1;
   height: 100%;
 }
 

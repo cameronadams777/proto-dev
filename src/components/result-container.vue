@@ -23,7 +23,10 @@ export default {
   methods: {
     updateView () {
       let doc
-      const iframe = document.getElementById('iframe')
+      let iframe = document.getElementById('iframe')
+
+      if (!iframe) return
+
       // eslint-disable-next-line
       const results = '<html><head><style>' + this.fiddle.cssCode + '</style></head><body>' + this.fiddle.htmlCode + '<script type="text/javascript">' + this.fiddle.javascriptCode + '<\/script></body></html>'
 
