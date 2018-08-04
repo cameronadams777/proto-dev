@@ -1,6 +1,6 @@
 {
   "name": "fiddle-native",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "description": "A Quasar Framework application for offline web development",
   "productName": "Fiddle Native",
@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "quasar dev -m electron",
+    "build": "quasar build -m electron",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
