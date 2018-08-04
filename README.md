@@ -6,6 +6,19 @@ Fiddle Native is a solution to building quick demos or other cool things just li
   <img alt="Fiddle Native in action" src="./src/assets/fiddle-native-demo.png" width=750px>
 </p>
 
-### License
+## Getting Started
 
-Licensed under the MIT License.
+This project utilizes the [Quasar Framework](https://quasar-framework.org/) so refer to their [getting started](https://quasar-framework.org/guide/) documentation before continuing 🙂
+
+```bash
+# Install dependencies
+# If you don't have yarn installed: `npm install --global yarn`
+yarn install
+
+# Launch and serve with live reload
+yarn dev
+```
+
+## License
+
+Licensed under the MIT License. See [here](https://github.com/CameronAdams777/fiddle-native/blob/master/LICENSE.txt).
