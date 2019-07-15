@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.14",
     "vue-codemirror": "^4.0.5",
     "vue-electron": "^1.0.6"
   },
@@ -33,7 +33,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
-    "quasar-cli": "^0.16.0"
+    "quasar-cli": "^0.17.26"
   },
   "engines": {
     "node": ">= 8.9.0",
