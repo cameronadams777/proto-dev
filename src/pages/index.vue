@@ -1,37 +1,24 @@
 <template>
   <q-page class="flex column">
     <div class="flex col">
-      <ViewPane
-        class="col"
-        initial-type="html"
-      />
-      <ViewPane
-        class="col"
-        initial-type="output"
-      />
+      <ViewPane class="col" initial-type="html" />
+      <ViewPane class="col" initial-type="output" />
     </div>
     <div class="flex col">
-      <ViewPane
-        class="col"
-        initial-type="js"
-      />
-      <ViewPane
-        class="col"
-        initial-type="css"
-      />
+      <ViewPane class="col" initial-type="js" />
+      <ViewPane class="col" initial-type="css" />
     </div>
   </q-page>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
-import ViewPane from '../components/view-pane'
+import ViewPane from "../components/view-pane";
 export default {
-  name: 'PageIndex',
+  name: "PageIndex",
   components: {
     ViewPane
   }
-}
+};
 </script>

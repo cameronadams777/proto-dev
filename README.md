@@ -1,24 +1,26 @@
-# Fiddle Native
+# Fiddle Native (fiddle-native-2.0)
 
-Fiddle Native is a solution to building quick demos or other cool things just like you are accustomed to with other online tools, however being an native app, you don't have to rely on an internet connection!
+A Quasar Framework app
 
-<p align="center">
-  <img alt="Fiddle Native in action" src="./src/assets/fiddle-native-demo.png" width=750px>
-</p>
-
-## Getting Started
-
-This project utilizes the [Quasar Framework](https://quasar-framework.org/) so refer to their [getting started](https://quasar-framework.org/guide/) documentation before continuing 🙂
-
+## Install the dependencies
 ```bash
-# Install dependencies
-# If you don't have yarn installed: `npm install --global yarn`
-yarn install
-
-# Launch and serve with live reload
-yarn dev
+yarn
 ```
 
-## License
+### Start the app in development mode (hot-code reloading, error reporting, etc.)
+```bash
+quasar dev
+```
 
-Licensed under the MIT License. See [here](https://github.com/CameronAdams777/fiddle-native/blob/master/LICENSE.txt).
+### Lint the files
+```bash
+yarn run lint
+```
+
+### Build the app for production
+```bash
+quasar build
+```
+
+### Customize the configuration
+See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
