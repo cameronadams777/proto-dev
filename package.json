@@ -1,48 +1,44 @@
 {
-  "name": "fiddle-native",
-  "version": "1.1.0",
-  "license": "MIT",
-  "description": "A Quasar Framework application for offline web development",
+  "name": "fiddle-native-2.0",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
   "productName": "Fiddle Native",
   "cordovaId": "org.fiddle.native.app",
+  "capacitorId": "",
   "author": "Cameron Adams <cameronadams777@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "quasar dev -m electron",
-    "build": "quasar build -m electron",
-    "lint": "eslint --ext .js,.vue src"
+    "dev": "quasar dev",
+    "dev:electron": "quasar dev -m electron",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ./"
   },
   "dependencies": {
-    "lodash": "^4.17.14",
-    "vue-codemirror": "^4.0.5",
-    "vue-electron": "^1.0.6"
+    "@quasar/extras": "^1.0.0",
+    "lodash": "^4.17.15",
+    "quasar": "^1.0.0",
+    "vue-codemirror": "^4.0.6"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
-    "devtron": "1.4.0",
-    "electron": "^2.0.8",
-    "electron-debug": "1.5.0",
-    "electron-devtools-installer": "2.2.4",
-    "electron-packager": "^12.0.1",
-    "eslint": "^4.18.2",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "^4.3.0",
-    "quasar-cli": "^0.17.26"
+    "@quasar/app": "^1.0.0",
+    "babel-eslint": "^10.0.1",
+    "devtron": "^1.4.0",
+    "electron": "^8.0.1",
+    "electron-debug": "^3.0.1",
+    "electron-devtools-installer": "^2.2.4",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-vue": "^6.1.2"
   },
   "engines": {
-    "node": ">= 8.9.0",
-    "npm": ">= 5.6.0",
-    "yarn": ">= 1.6.0"
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 10"
-  ]
+    "last 1 version, not dead, ie >= 11"
+  ],
+  "resolutions": {
+    "@babel/parser": "7.7.5"
+  }
 }
