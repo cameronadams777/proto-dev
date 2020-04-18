@@ -4,7 +4,6 @@
 
 <script>
 import uniqueId from "lodash/uniqueId";
-import { EventBus } from "../helpers/event-bus";
 import { fiddleGetters } from "../store/helpers";
 export default {
   computed: {
@@ -14,7 +13,7 @@ export default {
     this.updateView();
   },
   created() {
-    EventBus.$on("run-fiddle", () => this.updateView());
+    this.$root.$on("run-fiddle", () => this.updateView());
   },
   methods: {
     updateView() {

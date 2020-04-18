@@ -18,12 +18,13 @@ export default {
     codemirror
   },
   data () {
+    const settings = this.$q.localStorage.getItem('settings')
     return {
       cmOptions: {
-        tabSize: 2,
+        tabSize: settings.tabSize,
         mode: 'text/javascript',
-        lineNumbers: true,
-        line: true
+        lineNumbers: settings.lineNumbers,
+        line: settings.line
       }
     }
   },

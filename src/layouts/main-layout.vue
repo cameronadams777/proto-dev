@@ -8,7 +8,7 @@
           Fiddle Native
         </q-toolbar-title>
 
-        <q-btn flat round @click="runFiddle">
+        <q-btn v-if="onHomeRoute" flat round @click="runFiddle">
           <q-icon name="fas fa-chevron-right" />
         </q-btn>
       </q-toolbar>
@@ -21,6 +21,15 @@
       >
         <q-scroll-area class="fit">
           <q-list padding class="menu-list">
+            <q-item @click="$router.push('/')" clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="fas fa-hammer" />
+              </q-item-section>
+
+              <q-item-section>
+                Build
+              </q-item-section>
+            </q-item>
             <q-item @click="$router.push('/settings')" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="fas fa-cog" />
@@ -41,8 +50,6 @@
 </template>
 
 <script>
-// Import the EventBus we just created.
-import { EventBus } from "../helpers/event-bus.js";
 export default {
   name: "MainLayout",
   data() {
@@ -50,9 +57,14 @@ export default {
       displayDrawer: false
     }
   },
+  computed: {
+    onHomeRoute() {
+      return this.$route.path === '/'
+    }
+  },
   methods: {
     runFiddle() {
-      EventBus.$emit("run-fiddle");
+      this.$root.$emit("run-fiddle");
     }
   }
 };

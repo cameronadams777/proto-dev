@@ -4,8 +4,13 @@
   </div>
 </template>
 
-<script >
+<script>
+import settingsJSON from './app-files/settings.json'
 export default {
-  name: 'App'
+  name: 'App',
+  created() {
+    if(!this.$q.localStorage.getItem('settings')) 
+      this.$q.localStorage.set('settings', settingsJSON)
+  }
 }
 </script>

@@ -19,13 +19,19 @@ export default {
   },
   data () {
     return {
-      cmOptions: {
-        tabSize: 2,
-        mode: 'text/css',
-        lineNumbers: true,
-        line: true
-      }
+      settings: {},
+      cmOptions: {}
     }
+  },
+  mounted() {
+    this.settings = this.$q.localStorage.getItem('settings')
+    this.cmOptions = {
+      tabSize: this.settings.tabSize,
+      mode: 'text/css',
+      lineNumbers: this.settings.lineNumbers,
+      line: this.settings.line
+    }
+    console.log(this.cmOptions)
   },
   computed: {
     ...fiddleGetters
