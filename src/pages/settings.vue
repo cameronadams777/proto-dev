@@ -19,13 +19,10 @@ export default {
       settingsCode: JSON.stringify(this.$q.localStorage.getItem('settings'), null, this.$q.localStorage.getItem('settings').tabSize)
     }
   },
-  beforeDestroy() {
-    const updatedSettings = JSON.parse(this.settingsCode)
-    this.$q.localStorage.set('settings', updatedSettings)
-  },
   methods: {
     updateSettingsCode(event) {
       this.settingsCode = event
+      this.$q.localStorage.setItem('settings', JSON.parse(this.settingsCode))
     }
   }
 }

@@ -47,7 +47,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import '../css/app.scss';
+
 .results-container {
   height: 100%;
 }
@@ -55,6 +57,7 @@ export default {
 .results {
   width: 100%;
   height: 100%;
-  border: 1px solid #beb1b1;
+  border: 1px solid $results-container-border-color;
+  background-color: $results-container-background-color;
 }
 </style>

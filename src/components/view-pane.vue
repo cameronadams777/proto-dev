@@ -1,58 +1,33 @@
 <template>
   <div class="view-pane">
     <div class="view-container">
-      <HTMLEditor v-if="currentType === 'html'"/>
-      <JavaScriptEditor v-if="currentType === 'js'"/>
-      <CSSEditor v-if="currentType === 'css'"/>
-      <ResultContainer v-if="currentType === 'output'"/>
+      <Editor
+        v-if="language"
+        :language="language"
+        :defaultCode="code"
+        @input="$emit('input', $event)"
+      />
+      <ResultContainer v-else/>
     </div>
-    <q-select
-      v-model="currentType"
-      class="language-label"
-     :options="types"
-    />
   </div>
 </template>
 
 <script>
-import HTMLEditor from './html-editor'
-import JavaScriptEditor from './javascript-editor'
-import CSSEditor from './css-editor'
+import Editor from '../components/editor'
 import ResultContainer from './result-container'
 export default {
   components: {
-    HTMLEditor,
-    JavaScriptEditor,
-    CSSEditor,
+    Editor,
     ResultContainer
   },
   props: {
-    initialType: {
+    language: {
       type: String,
-      default: 'html'
-    }
-  },
-  data () {
-    return {
-      types: [
-        {
-          label: 'HTML',
-          value: 'html'
-        },
-        {
-          label: 'JavaScript',
-          value: 'js'
-        },
-        {
-          label: 'CSS',
-          value: 'css'
-        },
-        {
-          label: 'Output',
-          value: 'output'
-        }
-      ],
-      currentType: this.initialType
+      default: ''
+    },
+    code: {
+      type: String,
+      default: ''
     }
   },
   computed: {

@@ -12,7 +12,10 @@
 import { fiddleGetters, fiddleActions } from '../store/helpers'
 import { codemirror } from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/ayu-dark.css'
+import 'codemirror/mode/css/css.js'
 import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/mode/htmlembedded/htmlembedded.js'
 export default {
   components: {
     codemirror
@@ -33,6 +36,9 @@ export default {
       cmOptions: {
         tabSize: settings.tabSize,
         mode: this.language,
+        theme: (this.$q.dark.isActive || settings.theme === 'dark') 
+          ? 'ayu-dark' 
+          : 'default',
         lineNumbers: settings.lineNumbers,
         line: settings.line
       },
@@ -48,10 +54,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
+@import '../css/app.scss';
+
 .editor-container {
   position: relative;
-  border: 1px solid #beb1b1;
+  border: 1px solid $editor-border-color;
   height: 100%;
 }
 

@@ -1,14 +1,19 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" :id="getAppId">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="toolbar">
         <q-btn icon="fas fa-bars" @click="displayDrawer = !displayDrawer" flat round/>
 
         <q-toolbar-title>
           Fiddle Native
         </q-toolbar-title>
 
-        <q-btn v-if="onHomeRoute" flat round @click="runFiddle">
+        <q-btn 
+          v-if="onHomeRoute" 
+          flat
+          round
+          @click="runFiddle"
+        >
           <q-icon name="fas fa-chevron-right" />
         </q-btn>
       </q-toolbar>
@@ -17,7 +22,8 @@
     <q-drawer
         v-model="displayDrawer"
         :width="200"
-        :breakpoint="500"
+        elevated
+        content-class="drawer"
       >
         <q-scroll-area class="fit">
           <q-list padding class="menu-list">
@@ -60,6 +66,12 @@ export default {
   computed: {
     onHomeRoute() {
       return this.$route.path === '/'
+    },
+    getAppId() {
+      const settings = this.$q.localStorage.getItem('settings')
+      return (this.$q.dark.isActive || settings.theme === 'dark') 
+        ? 'app-dark' 
+        : 'app-light'
     }
   },
   methods: {
@@ -69,3 +81,18 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import '../css/app.scss';
+
+.toolbar {
+  transition: all 0.5s;
+  background-color: $toolbar-color;
+  color: $text-color;
+}
+
+.drawer {
+  background-color: $sidebar-color;
+  color: $text-color;
+}
+</style>

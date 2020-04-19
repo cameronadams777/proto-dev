@@ -48,10 +48,13 @@ module.exports = function(/* ctx */) {
 
       components: [],
       directives: [],
+      config: {
+        dark: "auto" // or Boolean true/false
+      },
 
       // Quasar plugins
       plugins: [
-        'LocalStorage'
+        "LocalStorage"
       ]
     },
 
