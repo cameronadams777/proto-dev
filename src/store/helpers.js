@@ -1,4 +1,4 @@
-import { mapState, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export const fiddleGetters = {
   ...mapState({
@@ -10,4 +10,17 @@ export const fiddleActions = mapActions([
   "initFiddle",
   "resetFiddle",
   "updateFiddle"
+]);
+
+export const settingsGetters = {
+  ...mapState({
+    settings: state => state.settings.settings
+  }),
+  ...mapGetters([
+    'isDarkMode'
+  ])
+}
+
+export const settingsActions = mapActions([
+  "updateSettings",
 ]);

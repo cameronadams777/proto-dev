@@ -9,13 +9,17 @@
 </template>
 
 <script>
-import { fiddleGetters, fiddleActions } from '../store/helpers'
-import { codemirror } from 'vue-codemirror'
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/ayu-dark.css'
-import 'codemirror/mode/css/css.js'
-import 'codemirror/mode/javascript/javascript.js'
-import 'codemirror/mode/htmlembedded/htmlembedded.js'
+import {
+  fiddleGetters,
+  fiddleActions,
+  settingsGetters
+} from "../store/helpers";
+import { codemirror } from "vue-codemirror";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/ayu-dark.css";
+import "codemirror/mode/css/css.js";
+import "codemirror/mode/javascript/javascript.js";
+import "codemirror/mode/htmlembedded/htmlembedded.js";
 export default {
   components: {
     codemirror
@@ -27,35 +31,44 @@ export default {
     },
     defaultCode: {
       type: String,
-      default: ''
+      default: ""
     }
   },
-  data () {
-    const settings = this.$q.localStorage.getItem('settings')
+  data() {
     return {
-      cmOptions: {
-        tabSize: settings.tabSize,
-        mode: this.language,
-        theme: (this.$q.dark.isActive || settings.theme === 'dark') 
-          ? 'ayu-dark' 
-          : 'default',
-        lineNumbers: settings.lineNumbers,
-        line: settings.line
-      },
+      cmOptions: {},
       code: this.defaultCode
+    };
+  },
+  created() {
+    this.cmOptions = {
+      tabSize: this.settings.tabSize,
+      mode: this.language,
+      theme: this.isDarkMode ? "ayu-dark" : "default",
+      lineNumbers: this.settings.lineNumbers,
+      line: this.settings.line
+    };
+  },
+  watch: {
+    isDarkMode() {
+      this.cmOptions = {
+        ...this.cmOptions,
+        theme: this.isDarkMode ? "ayu-dark" : "default"
+      }
     }
   },
   computed: {
-    ...fiddleGetters
+    ...fiddleGetters,
+    ...settingsGetters
   },
   methods: {
     ...fiddleActions
   }
-}
+};
 </script>
 
-<style lang='scss'>
-@import '../css/app.scss';
+<style lang="scss">
+@import "../css/app.scss";
 
 .editor-container {
   position: relative;

@@ -16,6 +16,14 @@
         >
           <q-icon name="fas fa-chevron-right" />
         </q-btn>
+        <q-btn 
+          v-else-if="onSettingsRoute" 
+          flat
+          round
+          @click="updateSettings"
+        >
+          <q-icon name="fas fa-save" />
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -56,6 +64,7 @@
 </template>
 
 <script>
+import { settingsGetters, settingsActions } from '../store/helpers'
 export default {
   name: "MainLayout",
   data() {
@@ -64,19 +73,25 @@ export default {
     }
   },
   computed: {
+    ...settingsGetters,
     onHomeRoute() {
       return this.$route.path === '/'
     },
+    onSettingsRoute() {
+      return this.$route.path === '/settings'
+    },
     getAppId() {
-      const settings = this.$q.localStorage.getItem('settings')
-      return (this.$q.dark.isActive || settings.theme === 'dark') 
+      return this.isDarkMode 
         ? 'app-dark' 
         : 'app-light'
     }
   },
   methods: {
     runFiddle() {
-      this.$root.$emit("run-fiddle");
+      this.$root.$emit('run-fiddle');
+    },
+    updateSettings() {
+      this.$root.$emit('update-settings')
     }
   }
 };

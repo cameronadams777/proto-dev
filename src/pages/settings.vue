@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import settingsJSON from '../app-files/settings.json'
+import { settingsGetters, settingsActions } from '../store/helpers'
 import Editor from '../components/editor'
 export default {
   components: {
@@ -16,13 +16,20 @@ export default {
   },
   data () {
     return {
-      settingsCode: JSON.stringify(this.$q.localStorage.getItem('settings'), null, this.$q.localStorage.getItem('settings').tabSize)
+      settingsCode: ''
     }
   },
+  created() {
+    this.settingsCode = JSON.stringify(this.settings, null, this.settings.tabSize)
+    this.$root.$on('update-settings', () => this.updateSettings(this.settingsCode))
+  },
+  computed: {
+    ...settingsGetters
+  },
   methods: {
+    ...settingsActions,
     updateSettingsCode(event) {
       this.settingsCode = event
-      this.$q.localStorage.setItem('settings', JSON.parse(this.settingsCode))
     }
   }
 }
