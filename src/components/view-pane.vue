@@ -2,27 +2,29 @@
   <div class="view-pane">
     <div class="view-container">
       <Editor
-        v-if="language"
-        :language="currentLanguage.language"
-        :defaultCode="currentLanguage.code"
-        @input="currentLanguage.update"
+        v-if="currentView.view === 'editor'"
+        :language="currentView.language"
+        :defaultCode="currentView.code"
+        @input="currentView.update"
       />
-      <ResultContainer v-else />
+      <Console v-else-if="currentView.view === 'console'" />
+      <ResultContainer v-else-if="currentView.view === 'output'" />
     </div>
-    <q-btn 
-      v-if="currentLanguage" 
-      class="language-label" 
+    <q-btn
+      v-if="currentView.view !== 'output'"
+      class="language-label"
       color="primary"
-      :label="currentLanguage.label"
+      :label="currentView.label"
     >
       <q-menu anchor="bottom left" self="top left">
         <q-item
-          v-for="language in languageOptions"
-          :key="language.label"
+          v-for="viewOption in viewOptions"
+          :key="viewOption.label"
           clickable
-          @click="selectLanguage(language)"
+          v-close-popup
+          @click="selectView(viewOption)"
         >
-          <q-item-section>{{ language.label }}</q-item-section>
+          <q-item-section>{{ viewOption.label }}</q-item-section>
         </q-item>
       </q-menu>
     </q-btn>
@@ -31,11 +33,13 @@
 
 <script>
 import Editor from "../components/editor";
+import Console from "../components/console";
 import ResultContainer from "./result-container";
 import { fiddleGetters, fiddleActions } from "../store/helpers";
 export default {
   components: {
     Editor,
+    Console,
     ResultContainer
   },
   props: {
@@ -46,38 +50,56 @@ export default {
     code: {
       type: String,
       default: ""
+    },
+    view: {
+      type: String,
+      required: true
     }
   },
   data() {
     return {
-      currentLanguage: {},
-      languageOptions: []
+      currentView: {},
+      viewOptions: []
     };
   },
   created() {
-    this.languageOptions = [
+    this.viewOptions = [
       {
         label: "HTML",
+        view: "editor",
         language: "text/html",
         code: this.fiddle.htmlCode,
         update: e => this.updateFiddle({ htmlCode: e })
       },
       {
         label: "CSS",
+        view: "editor",
         language: "text/css",
         code: this.fiddle.cssCode,
         update: e => this.updateFiddle({ cssCode: e })
       },
       {
         label: "Javascript",
+        view: "editor",
         language: "text/javascript",
         code: this.fiddle.javascriptCode,
         update: e => this.updateFiddle({ javascriptCode: e })
+      },
+      {
+        label: "Output",
+        view: "output"
+      },
+      {
+        label: "Console",
+        view: "console"
       }
     ];
 
-    this.currentLanguage = this.languageOptions.find(
-      languageOption => languageOption.language === this.language
+    this.currentView = this.viewOptions.find(
+      viewOption =>
+        (viewOption.view === "editor" &&
+          viewOption.language === this.language) ||
+        (viewOption.view !== "editor" && viewOption.view === this.view)
     );
   },
   computed: {
@@ -85,8 +107,8 @@ export default {
   },
   methods: {
     ...fiddleActions,
-    selectLanguage(language) {
-      this.currentLanguage = language;
+    selectView(view) {
+      this.currentView = view;
     }
   }
 };

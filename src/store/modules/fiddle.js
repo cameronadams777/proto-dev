@@ -5,7 +5,8 @@ import fs from "fs";
 const defaultFiddle = {
   htmlCode: "<p>Hello World</p>",
   cssCode: "p { color: blue; }",
-  javascriptCode: `// Check the console \n console.log('This is a test!')`
+  javascriptCode: `// Check the console \n console.log('This is a test!')`,
+  consoleOutput: []
 };
 
 export default {

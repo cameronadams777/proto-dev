@@ -5,6 +5,7 @@
   --text-color: #000000;
   --sidebar-color: #FFFFFF;
   --editor-border-color: #4c5b61;
+  --console-border-color: #4c5b61;
   --results-container-border-color: #4c5b61;
   --results-container-background-color: #FFFFFF;
 }
@@ -14,6 +15,7 @@
   --text-color: #FFFFFF;
   --sidebar-color: #4c5b61;
   --editor-border-color: #000000;
+  --console-border-color: #000000;
   --results-container-border-color: #000000;
   --results-container-background-color: #0A0E14;
 }
@@ -22,5 +24,6 @@ $toolbar-color: var(--toolbar-color);
 $text-color: var(--text-color);
 $sidebar-color: var(--sidebar-color);
 $editor-border-color: var(--editor-border-color);
+$console-border-color: var(--console-border-color);
 $results-container-border-color: var(--results-container-border-color);
 $results-container-background-color: var(--results-container-background-color);

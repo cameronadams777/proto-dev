@@ -2,18 +2,21 @@
   <q-page class="flex column">
     <div class="flex col">
       <ViewPane 
-        class="col" 
+        class="col"
+        view="editor"
         language="text/html"
       />
-      <ViewPane class="col" />
+      <ViewPane class="col" view="output" />
     </div>
     <div class="flex col">
       <ViewPane 
         class="col"
+        view="editor"
         language="text/javascript"
       />
       <ViewPane
         class="col"
+        view="editor"
         language="text/css"
        />
     </div>

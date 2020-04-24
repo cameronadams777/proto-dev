@@ -4,7 +4,7 @@
 
 <script>
 import uniqueId from "lodash/uniqueId";
-import { fiddleGetters } from "../store/helpers";
+import { fiddleGetters, fiddleActions } from "../store/helpers";
 export default {
   computed: {
     ...fiddleGetters
@@ -16,6 +16,7 @@ export default {
     this.$root.$on("run-fiddle", () => this.updateView());
   },
   methods: {
+    ...fiddleActions,
     updateView() {
       let doc;
       let container = this.$refs.container;
@@ -24,6 +25,12 @@ export default {
       container.innerHTML = `<iframe id="${iframeId}" class="results" />`;
 
       const iframe = document.getElementById(iframeId);
+
+      const consoleOutput = []
+
+      iframe.contentWindow.console.log = (...args) => {
+        consoleOutput.push(...args);
+      }
 
       // eslint-disable-next-line
       const results =
@@ -42,6 +49,7 @@ export default {
       doc.open();
       doc.writeln(results);
       doc.close();
+      this.updateFiddle({ consoleOutput })
     }
   }
 };
