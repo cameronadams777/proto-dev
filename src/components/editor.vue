@@ -55,6 +55,14 @@ export default {
         ...this.cmOptions,
         theme: this.isDarkMode ? "ayu-dark" : "default"
       }
+    },
+    language() {
+      this.code = this.defaultCode
+      this.cmOptions = {
+        ...this.cmOptions,
+        mode: this.language,
+        theme: this.isDarkMode ? "ayu-dark" : "default"
+      }
     }
   },
   computed: {

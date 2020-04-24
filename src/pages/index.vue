@@ -3,9 +3,7 @@
     <div class="flex col">
       <ViewPane 
         class="col" 
-        language="text/html" 
-        :code="fiddle.htmlCode" 
-        @input="updateFiddle({ htmlCode: $event })"
+        language="text/html"
       />
       <ViewPane class="col" />
     </div>
@@ -13,14 +11,10 @@
       <ViewPane 
         class="col"
         language="text/javascript"
-        :code="fiddle.javascriptCode"
-        @input="updateFiddle({ javascriptCode: $event })"
       />
       <ViewPane
         class="col"
         language="text/css"
-        :code="fiddle.cssCode"
-        @input="updateFiddle({ cssCode: $event })"
        />
     </div>
   </q-page>

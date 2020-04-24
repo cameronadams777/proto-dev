@@ -3,18 +3,36 @@
     <div class="view-container">
       <Editor
         v-if="language"
-        :language="language"
-        :defaultCode="code"
-        @input="$emit('input', $event)"
+        :language="currentLanguage.language"
+        :defaultCode="currentLanguage.code"
+        @input="currentLanguage.update"
       />
-      <ResultContainer v-else/>
+      <ResultContainer v-else />
     </div>
+    <q-btn 
+      v-if="currentLanguage" 
+      class="language-label" 
+      color="primary"
+      :label="currentLanguage.label"
+    >
+      <q-menu anchor="bottom left" self="top left">
+        <q-item
+          v-for="language in languageOptions"
+          :key="language.label"
+          clickable
+          @click="selectLanguage(language)"
+        >
+          <q-item-section>{{ language.label }}</q-item-section>
+        </q-item>
+      </q-menu>
+    </q-btn>
   </div>
 </template>
 
 <script>
-import Editor from '../components/editor'
-import ResultContainer from './result-container'
+import Editor from "../components/editor";
+import ResultContainer from "./result-container";
+import { fiddleGetters, fiddleActions } from "../store/helpers";
 export default {
   components: {
     Editor,
@@ -23,22 +41,60 @@ export default {
   props: {
     language: {
       type: String,
-      default: ''
+      default: ""
     },
     code: {
       type: String,
-      default: ''
+      default: ""
     }
   },
+  data() {
+    return {
+      currentLanguage: {},
+      languageOptions: []
+    };
+  },
+  created() {
+    this.languageOptions = [
+      {
+        label: "HTML",
+        language: "text/html",
+        code: this.fiddle.htmlCode,
+        update: e => this.updateFiddle({ htmlCode: e })
+      },
+      {
+        label: "CSS",
+        language: "text/css",
+        code: this.fiddle.cssCode,
+        update: e => this.updateFiddle({ cssCode: e })
+      },
+      {
+        label: "Javascript",
+        language: "text/javascript",
+        code: this.fiddle.javascriptCode,
+        update: e => this.updateFiddle({ javascriptCode: e })
+      }
+    ];
+
+    this.currentLanguage = this.languageOptions.find(
+      languageOption => languageOption.language === this.language
+    );
+  },
   computed: {
-    formattedCurrentType () {
-      return this.currentType.toUpperCase()
+    ...fiddleGetters
+  },
+  methods: {
+    ...fiddleActions,
+    selectLanguage(language) {
+      this.currentLanguage = language;
     }
   }
-}
+};
 </script>
 
-<style>
+<style lang="scss">
+@import "../css/app.scss";
+
 .view-pane {
   position: relative;
 }
@@ -49,15 +105,8 @@ export default {
 
 .language-label {
   position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 50px;
-  margin: 5px;
-  padding: 5px;
-  color: grey;
-  text-align: center;
-  border-style: solid;
-  border-radius: 5px;
-  border-width: 1px;
+  top: 10px;
+  right: 15px;
+  z-index: 9999999;
 }
 </style>
