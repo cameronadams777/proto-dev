@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Fiddle Native</string>
+    <string name="title_activity_main">Fiddle Native</string>
+    <string name="package_name">org.fiddle.offline.app</string>
+    <string name="custom_url_scheme">org.fiddle.offline.app</string>
+</resources>
