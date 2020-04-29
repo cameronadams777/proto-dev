@@ -10,6 +10,8 @@
   "scripts": {
     "dev": "quasar dev",
     "dev:electron": "quasar dev -m electron",
+    "dev:android": "quasar dev -m capacitor -T android",
+    "dev:ios": "quasar dev -m capacitor -T ios",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ./",
     "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
     "test:unit": "jest --updateSnapshot",
