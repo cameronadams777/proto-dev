@@ -53,9 +53,7 @@ module.exports = function(/* ctx */) {
       },
 
       // Quasar plugins
-      plugins: [
-        "LocalStorage"
-      ]
+      plugins: ["LocalStorage"]
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -117,7 +115,7 @@ module.exports = function(/* ctx */) {
         short_name: "Fiddle Native",
         description: "A Quasar Framework app",
         display: "standalone",
-        orientation: "portrait",
+        orientation: "landscape",
 
         background_color: "#ffffff",
 
@@ -149,6 +147,17 @@ module.exports = function(/* ctx */) {
             type: "image/png"
           }
         ]
+      },
+      metaVariables: {
+        appleMobileWebAppCapable: "yes",
+        appleMobileWebAppStatusBarStyle: "default",
+        appleTouchIcon120: "statics/icons/apple-icon-120x120.png",
+        appleTouchIcon180: "statics/icons/apple-icon-180x180.png",
+        appleTouchIcon152: "statics/icons/apple-icon-152x152.png",
+        appleTouchIcon167: "statics/icons/apple-icon-167x167.png",
+        appleSafariPinnedTab: "statics/icons/safari-pinned-tab.svg",
+        msapplicationTileImage: "statics/icons/ms-icon-144x144.png",
+        msapplicationTileColor: "#000000"
       }
     },
 
