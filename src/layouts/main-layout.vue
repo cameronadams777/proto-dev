@@ -4,9 +4,7 @@
       <q-toolbar class="toolbar">
         <q-btn icon="fas fa-bars" @click="displayDrawer = !displayDrawer" flat round/>
 
-        <q-toolbar-title>
-          Fiddle Native
-        </q-toolbar-title>
+        <q-toolbar-title></q-toolbar-title>
 
         <q-btn 
           v-if="onHomeRoute" 
