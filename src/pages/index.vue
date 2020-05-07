@@ -25,17 +25,13 @@
 
 <script>
 import ViewPane from "../components/view-pane";
-import { fiddleGetters, fiddleActions } from '../store/helpers'
 export default {
   name: "PageIndex",
   components: {
     ViewPane
   },
-  computed: {
-    ...fiddleGetters
-  },
-  methods: {
-    ...fiddleActions
+  mounted() {
+    this.$ua.trackView('Editor')
   }
 };
 </script>
