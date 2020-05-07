@@ -1,6 +1,6 @@
 {
   "appId": "org.fiddle.offline.app",
-  "appName": "Fiddle Native",
+  "appName": "Proto Dev",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
   "webDir": "www",

@@ -2,7 +2,7 @@
   "name": "fiddle-native",
   "version": "1.2.1",
   "description": "An application for demoing ideas offline",
-  "productName": "Fiddle Native",
+  "productName": "Proto Dev",
   "cordovaId": "org.fiddle.offline.app",
   "capacitorId": "",
   "author": "Cameron Adams <cameronadams777@gmail.com>",

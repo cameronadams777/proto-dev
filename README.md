@@ -1,9 +1,9 @@
-# Fiddle Native
+# Proto Dev
 
-Fiddle Native is a solution to building quick demos or other cool things just like you are accustomed to with other online tools, however being an native app, you don't have to rely on an internet connection!
+Proto Dev is a solution to building quick demos or other cool things just like you are accustomed to with other online tools, however being an native app, you don't have to rely on an internet connection!
 
 <p align="center">
-  <img alt="Fiddle Native in action" src="./fiddle-native-demo.png" width=750px>
+  <img alt="Proto Dev in action" src="./fiddle-native-demo.png" width=750px>
 </p>
 
 ## Getting Started

@@ -110,9 +110,9 @@ module.exports = function(/* ctx */) {
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: "Fiddle Native",
+        name: "Proto Dev",
 
-        short_name: "Fiddle Native",
+        short_name: "Proto Dev",
         description: "A Quasar Framework app",
         display: "standalone",
         orientation: "landscape",
