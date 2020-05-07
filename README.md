@@ -3,7 +3,7 @@
 Proto Dev is a solution to building quick demos or other cool things just like you are accustomed to with other online tools, however being an native app, you don't have to rely on an internet connection!
 
 <p align="center">
-  <img alt="Proto Dev in action" src="./fiddle-native-demo.png" width=750px>
+  <img alt="Proto Dev in action" src="./proto-dev-demo.png" width=750px>
 </p>
 
 ## Getting Started
@@ -21,4 +21,4 @@ yarn dev
 
 ## License
 
-Licensed under the MIT License. See [here](https://github.com/CameronAdams777/fiddle-native/blob/master/LICENSE.txt).
+Licensed under the MIT License. See [here](https://github.com/CameronAdams777/proto-dev/blob/master/LICENSE.txt).

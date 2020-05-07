@@ -23,8 +23,6 @@
   </q-page>
 </template>
 
-<style></style>
-
 <script>
 import ViewPane from "../components/view-pane";
 import { fiddleGetters, fiddleActions } from '../store/helpers'

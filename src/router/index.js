@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueAnalytics from 'vue-ua'
 
 import routes from './routes'
 
@@ -25,6 +26,15 @@ export default function (/* { store, ssrContext } */) {
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
   })
+
+  Vue.use(VueAnalytics, {
+    appName: 'proto-dev', // Mandatory
+    appVersion: "1.2.1", // Mandatory
+    trackingId: process.env.MEASUREMENT_ID, // Mandatory
+    debug: process.env.NODE_ENV !== 'production', // Whether or not display console logs debugs (optional)
+    vueRouter: Router, // Pass the router instance to automatically sync with router (optional)
+    ignoredViews: [], // If router, you can exclude some routes name (case insensitive) (optional)
+  });
 
   return Router
 }

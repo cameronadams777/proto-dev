@@ -1,5 +1,5 @@
 {
-  "name": "fiddle-native",
+  "name": "proto-dev",
   "version": "1.2.1",
   "description": "An application for demoing ideas offline",
   "productName": "Proto Dev",
@@ -25,7 +25,8 @@
     "@quasar/extras": "^1.0.0",
     "lodash": "^4.17.15",
     "quasar": "^1.0.0",
-    "vue-codemirror": "^4.0.6"
+    "vue-codemirror": "^4.0.6",
+    "vue-ua": "^1.7.0"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",
