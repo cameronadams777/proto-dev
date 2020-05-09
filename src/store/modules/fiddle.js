@@ -3,6 +3,7 @@ import fs from "fs";
 // Default fiddle values to demostrate what each box in the UI is for. It is
 // stored here so that we can reset it when we need to.
 const defaultFiddle = {
+  links: [],
   htmlCode: "<p>Hello World</p>",
   cssCode: "p { color: blue; }",
   javascriptCode: `// Check the console \n console.log('This is a test!')`,

@@ -86,9 +86,11 @@ export default {
 
 .vue-codemirror {
   height: 100%;
+  overflow: hidden;
 }
 
 .CodeMirror {
   height: 100%;
+  overflow: hidden;
 }
 </style>
