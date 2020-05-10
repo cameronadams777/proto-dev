@@ -129,6 +129,6 @@ export default {
   position: absolute;
   top: 10px;
   right: 15px;
-  z-index: 9999999;
+  z-index: 10;
 }
 </style>

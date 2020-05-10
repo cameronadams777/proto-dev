@@ -10,9 +10,16 @@
           v-if="onHomeRoute" 
           flat
           round
+          icon="fas fa-sliders-h"
+          @click="toggleFiddleSettingsModal"
+        />
+        <q-btn 
+          v-if="onHomeRoute" 
+          flat
+          round
+          icon="fas fa-chevron-right"
           @click="runFiddle"
         >
-          <q-icon name="fas fa-chevron-right" />
         </q-btn>
         <q-btn 
           v-else-if="onSettingsRoute" 
@@ -62,7 +69,7 @@
 </template>
 
 <script>
-import { settingsGetters, settingsActions } from '../store/helpers'
+import { settingsGetters, interfaceGetters, interfaceActions } from '../store/helpers'
 export default {
   name: "MainLayout",
   data() {
@@ -71,6 +78,7 @@ export default {
     }
   },
   computed: {
+    ...interfaceGetters,
     ...settingsGetters,
     onHomeRoute() {
       return this.$route.path === '/'
@@ -85,11 +93,15 @@ export default {
     }
   },
   methods: {
+    ...interfaceActions,
     runFiddle() {
       this.$root.$emit('run-fiddle');
     },
     updateSettings() {
       this.$root.$emit('update-settings')
+    },
+    toggleFiddleSettingsModal() {
+      this.updateDisplayFiddleSettingsModal(!this.displayFiddleSettingsModal)
     }
   }
 };
