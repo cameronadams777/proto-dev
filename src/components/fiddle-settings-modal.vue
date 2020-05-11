@@ -41,7 +41,7 @@
                 removable
                 @remove="removeResource(link)"
               >
-                {{ link }}
+                {{ link | linkName }}
               </q-chip>
             </div>
             <q-input
@@ -77,6 +77,11 @@ export default {
       boilerplateOptions,
       resourceToAdd: ""
     };
+  },
+  filters: {
+    linkName(link) {
+      return link.substring(link.lastIndexOf('/') + 1, link.length);
+    }
   },
   computed: {
     ...interfaceGetters,
