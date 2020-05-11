@@ -28,6 +28,34 @@
               @input="selectBoilerplate"
             />
           </section>
+          <section>
+            <span class="fiddle-settings-modal__section-title">
+              External Resources
+            </span>
+            <div>
+              <q-chip
+                v-for="(link, index) in fiddle.links"
+                :key="index"
+                color="primary"
+                text-color="white"
+                removable
+                @remove="removeResource(link)"
+              >
+                {{ link }}
+              </q-chip>
+            </div>
+            <q-input
+              v-model="resourceToAdd"
+              label="Resources/CDN"
+              filled
+              bottom-slots
+              @keydown.enter="appendResource"
+            >
+              <template v-slot:append>
+                <q-btn round dense flat icon="add" @click="appendResource" />
+              </template>
+            </q-input>
+          </section>
         </div>
       </div>
     </q-card>
@@ -46,7 +74,8 @@ export default {
   name: "FiddleSettingsModal",
   data() {
     return {
-      boilerplateOptions
+      boilerplateOptions,
+      resourceToAdd: ""
     };
   },
   computed: {
@@ -64,6 +93,21 @@ export default {
     },
     selectBoilerplate(e) {
       this.updateSelectedBoilerplateOption(e);
+    },
+    appendResource() {
+      if (
+        this.resourceToAdd !== "" &&
+        !this.fiddle.links.includes(this.resourceToAdd)
+      ) {
+        this.updateFiddle({
+          links: [...this.fiddle.links, this.resourceToAdd]
+        });
+        this.resourceToAdd = "";
+      }
+    },
+    removeResource(removedLink) {
+      const newLinks = this.fiddle.links.filter(link => link !== removedLink);
+      this.updateFiddle({ links: newLinks });
     }
   }
 };
