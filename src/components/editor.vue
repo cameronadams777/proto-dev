@@ -63,6 +63,9 @@ export default {
         mode: this.language,
         theme: this.isDarkMode ? "ayu-dark" : "default"
       }
+    },
+    fiddle() {
+      this.code = this.defaultCode
     }
   },
   computed: {
