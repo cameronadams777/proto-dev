@@ -49,15 +49,6 @@
                 Build
               </q-item-section>
             </q-item>
-            <q-item @click="$router.push('/settings')" clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="fas fa-cog" />
-              </q-item-section>
-
-              <q-item-section>
-                Settings
-              </q-item-section>
-            </q-item>
           </q-list>
         </q-scroll-area>
       </q-drawer>
@@ -83,9 +74,6 @@ export default {
     onHomeRoute() {
       return this.$route.path === '/'
     },
-    onSettingsRoute() {
-      return this.$route.path === '/settings'
-    },
     getAppId() {
       return this.isDarkMode 
         ? 'app-dark' 
@@ -96,9 +84,6 @@ export default {
     ...interfaceActions,
     runFiddle() {
       this.$root.$emit('run-fiddle');
-    },
-    updateSettings() {
-      this.$root.$emit('update-settings')
     },
     toggleFiddleSettingsModal() {
       this.updateDisplayFiddleSettingsModal(!this.displayFiddleSettingsModal)
