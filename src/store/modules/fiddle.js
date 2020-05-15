@@ -3,11 +3,15 @@ import { boilerplates } from "../../constants";
 // Default fiddle values to demostrate what each box in the UI is for. It is
 // stored here so that we can reset it when we need to.
 const defaultFiddle = {
+  babelrc: {
+    presets: []
+  },
   links: [],
   htmlCode: "<p>Hello World</p>",
   cssCode: "p { color: blue; }",
   javascriptCode: `// Check the console \n console.log('This is a test!')`,
-  consoleOutput: []
+  consoleOutput: [],
+  jsType: 'text/javascript'
 };
 
 export default {
@@ -45,7 +49,7 @@ export default {
       const boilerplate = boilerplates[newValue];
       const newFiddle = {
         consoleOutput: [],
-        links: [...state.fiddle.links, ...boilerplate.dependencies],
+        links: boilerplate.dependencies,
         ...boilerplate.fiddleCode
       };
       commit("UPDATE_SELECTED_BOILERPLATE_OPTION", newValue);

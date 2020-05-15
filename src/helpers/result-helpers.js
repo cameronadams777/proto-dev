@@ -17,9 +17,10 @@ export const constructHTML = (fiddle) => {
       </head>
       <body>
         ${fiddle.htmlCode}
-        <script type="text/javascript">
+        <script type="${fiddle.jsType || 'text/javascript'}">
           ${fiddle.javascriptCode}
         </script>
+        ${buildLinks(fiddle)}
       </body>
     </html>
   `;
