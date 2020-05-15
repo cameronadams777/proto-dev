@@ -63,6 +63,9 @@ export default {
         mode: this.language,
         theme: this.isDarkMode ? "ayu-dark" : "default"
       }
+    },
+    fiddle() {
+      this.code = this.defaultCode
     }
   },
   computed: {
@@ -86,9 +89,11 @@ export default {
 
 .vue-codemirror {
   height: 100%;
+  overflow: hidden;
 }
 
 .CodeMirror {
   height: 100%;
+  overflow: hidden;
 }
 </style>

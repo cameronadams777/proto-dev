@@ -4,6 +4,7 @@
 
 <script>
 import uniqueId from "lodash/uniqueId";
+import { constructHTML } from "../helpers/result-helpers";
 import { fiddleGetters, fiddleActions } from "../store/helpers";
 export default {
   computed: {
@@ -32,15 +33,7 @@ export default {
         consoleOutput.push(...args);
       }
 
-      // eslint-disable-next-line
-      const results =
-        "<html><head><style>" +
-        this.fiddle.cssCode +
-        "</style></head><body>" +
-        this.fiddle.htmlCode +
-        '<script type="text/javascript">' +
-        this.fiddle.javascriptCode +
-        "<\/script></body></html>";
+      const results = constructHTML(this.fiddle);
 
       if (iframe.contentDocument) doc = iframe.contentDocument;
       else if (iframe.contentWindow) doc = iframe.contentWindow.document;

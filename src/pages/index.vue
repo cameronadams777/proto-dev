@@ -29,9 +29,6 @@ export default {
   name: "PageIndex",
   components: {
     ViewPane
-  },
-  mounted() {
-    this.$ua.trackView('Editor')
   }
 };
 </script>
