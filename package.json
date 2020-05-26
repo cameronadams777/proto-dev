@@ -23,10 +23,12 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "firebase": "^7.14.5",
     "lodash": "^4.17.15",
     "quasar": "^1.0.0",
     "vue-codemirror": "^4.0.6",
-    "vue-ua": "^1.7.0"
+    "vue-ua": "^1.7.0",
+    "vuefire": "^2.2.2"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",
