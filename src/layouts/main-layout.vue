@@ -26,9 +26,6 @@
           @click="runFiddle"
         >
         </q-btn>
-        <q-btn v-else-if="onSettingsRoute" flat round @click="updateSettings">
-          <q-icon name="fas fa-save" />
-        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -40,16 +37,7 @@
     >
       <q-scroll-area class="fit">
         <q-list padding class="menu-list">
-          <q-item @click="$router.push('/login')" clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="fas fa-sign-in-alt" />
-            </q-item-section>
-
-            <q-item-section>
-              Login
-            </q-item-section>
-          </q-item>
-          <q-item @click="$router.push('/profile')" clickable v-ripple>
+          <q-item v-if="isLoggedIn" @click="$router.push('/profile')" clickable v-ripple>
             <q-item-section avatar>
               <q-avatar>
                 <img src="https://cdn.quasar.dev/img/avatar.png">
@@ -60,6 +48,15 @@
               Cameron
             </q-item-section>
           </q-item>
+          <q-item v-if="!isLoggedIn" @click="$router.push('/login')" clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="fas fa-sign-in-alt" />
+            </q-item-section>
+
+            <q-item-section>
+              Login
+            </q-item-section>
+          </q-item>
           <q-item @click="$router.push('/')" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="fas fa-hammer" />
@@ -67,6 +64,15 @@
 
             <q-item-section>
               Build
+            </q-item-section>
+          </q-item>
+          <q-item v-if="isLoggedIn" @click="logoutCurrentUser" clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="fas fa-sign-in-alt" />
+            </q-item-section>
+
+            <q-item-section>
+              Logout
             </q-item-section>
           </q-item>
         </q-list>
@@ -83,7 +89,9 @@
 import {
   settingsGetters,
   interfaceGetters,
-  interfaceActions
+  interfaceActions,
+  userGetters,
+  userActions
 } from "../store/helpers";
 export default {
   name: "MainLayout",
@@ -95,6 +103,7 @@ export default {
   computed: {
     ...interfaceGetters,
     ...settingsGetters,
+    ...userGetters,
     onHomeRoute() {
       return this.$route.path === "/";
     },
@@ -104,6 +113,7 @@ export default {
   },
   methods: {
     ...interfaceActions,
+    ...userActions,
     runFiddle() {
       this.$root.$emit("run-fiddle");
     },

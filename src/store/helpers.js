@@ -14,6 +14,20 @@ export const fiddleActions = mapActions([
   "updateSelectedBoilerplateOption"
 ]);
 
+export const userGetters = {
+  ...mapState({
+    user: state => state.user.user
+  }),
+  ...mapGetters(["isLoggedIn"])
+};
+
+export const userActions = mapActions([
+  "setUser",
+  "registerNewUser",
+  "loginUser",
+  "logoutCurrentUser"
+]);
+
 export const settingsGetters = {
   ...mapState({
     settings: state => state.settings.settings

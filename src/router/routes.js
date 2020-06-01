@@ -4,11 +4,23 @@ const routes = [
     component: () => import("layouts/main-layout.vue"),
     children: [
       { path: "", component: () => import("pages/index.vue") },
-      { path: "/login", component: () => import("pages/login.vue") },
-      { path: "/register", component: () => import("pages/register.vue") },
-      { path: "/profile", component: () => import("pages/profile.vue") }
+      {
+        path: "/login",
+        component: () => import("pages/login.vue"),
+        meta: { guest: true }
+      },
+      {
+        path: "/register",
+        component: () => import("pages/register.vue"),
+        meta: { guest: true }
+      },
+      {
+        path: "/profile",
+        component: () => import("pages/profile.vue"),
+        meta: { requiresAuth: true }
+      }
     ]
-  },
+  }
 ];
 
 // Always leave this as last one
