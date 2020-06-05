@@ -1,5 +1,5 @@
 <template>
-  <q-page class="register-page flex flex-center">
+  <q-page class="register-page flex flex-center" @keydown.enter="attemptToRegisterNewUser">
     <q-card class="register-page__form-card">
       <img src="../assets/logo.png" class="register-page__form-logo" />
       <span class="register-page__form-title">Proto Dev</span>

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="login-page flex flex-center">
+  <q-page class="login-page flex flex-center" @keydown.enter="attemptToLogUserIn">
     <q-card class="login-page__form-card">
       <img src="../assets/logo.png" class="login-page__form-logo" />
       <span class="login-page__form-title">Proto Dev</span>
