@@ -58,49 +58,23 @@ export default {
   },
   data() {
     return {
-      currentView: {},
+      currentView: {
+        label: "",
+        view: "",
+        language: "",
+        code: "",
+        update: () => {}
+      },
       viewOptions: []
     };
   },
   created() {
-    this.viewOptions = [
-      {
-        label: "HTML",
-        view: "editor",
-        language: "text/html",
-        code: this.fiddle.htmlCode,
-        update: e => this.updateFiddle({ htmlCode: e })
-      },
-      {
-        label: "CSS",
-        view: "editor",
-        language: "text/css",
-        code: this.fiddle.cssCode,
-        update: e => this.updateFiddle({ cssCode: e })
-      },
-      {
-        label: "Javascript",
-        view: "editor",
-        language: "text/javascript",
-        code: this.fiddle.javascriptCode,
-        update: e => this.updateFiddle({ javascriptCode: e })
-      },
-      {
-        label: "Output",
-        view: "output"
-      },
-      {
-        label: "Console",
-        view: "console"
-      }
-    ];
-
-    this.currentView = this.viewOptions.find(
-      viewOption =>
-        (viewOption.view === "editor" &&
-          viewOption.language === this.language) ||
-        (viewOption.view !== "editor" && viewOption.view === this.view)
-    );
+    this.initializeNewFiddle()
+  },
+  watch: {
+    fiddle() {
+      this.initializeNewFiddle();
+    }
   },
   computed: {
     ...fiddleGetters
@@ -109,6 +83,52 @@ export default {
     ...fiddleActions,
     selectView(view) {
       this.currentView = view;
+    },
+    initializeNewFiddle() {
+      this.viewOptions = [
+        {
+          label: "HTML",
+          view: "editor",
+          language: "text/html",
+          code: this.fiddle.htmlCode,
+          update: e => this.updateFiddle({ htmlCode: e })
+        },
+        {
+          label: "CSS",
+          view: "editor",
+          language: "text/css",
+          code: this.fiddle.cssCode,
+          update: e => this.updateFiddle({ cssCode: e })
+        },
+        {
+          label: "Javascript",
+          view: "editor",
+          language: "text/javascript",
+          code: this.fiddle.javascriptCode,
+          update: e => this.updateFiddle({ javascriptCode: e })
+        },
+        {
+          label: "Output",
+          view: "output",
+          language: "",
+          code: "",
+          update: () => {}
+        },
+        {
+          label: "Console",
+          view: "console",
+          language: "",
+          code: "",
+          update: () => {}
+        }
+      ];
+
+      this.currentView = this.viewOptions.find(
+        viewOption =>
+          (viewOption.view === "editor" &&
+            viewOption.language === this.language) ||
+          (viewOption.view !== "editor" && viewOption.view === this.view)
+      );
     }
   }
 };
@@ -129,6 +149,6 @@ export default {
   position: absolute;
   top: 10px;
   right: 15px;
-  z-index: 9999999;
+  z-index: 10;
 }
 </style>
