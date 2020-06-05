@@ -42,6 +42,10 @@ export default {
             .auth()
             .signInWithEmailAndPassword(payload.email, payload.password);
 
+          const user = {
+            
+          }
+
           dispatch("setUser", data.user);
         } catch (error) {
           reject(error);

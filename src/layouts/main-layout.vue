@@ -40,7 +40,7 @@
           <q-item v-if="isLoggedIn" @click="$router.push('/profile')" clickable v-ripple>
             <q-item-section avatar>
               <q-avatar>
-                <img src="https://cdn.quasar.dev/img/avatar.png">
+                <Avatar :displayName="user.displayName"/>
               </q-avatar>
             </q-item-section>
 
@@ -93,8 +93,12 @@ import {
   userGetters,
   userActions
 } from "../store/helpers";
+import Avatar from '../components/avatar.vue'
 export default {
   name: "MainLayout",
+  components: {
+    Avatar
+  },
   data() {
     return {
       displayDrawer: false
