@@ -80,7 +80,7 @@ export default {
   },
   filters: {
     linkName(link) {
-      return link.substring(link.lastIndexOf('/') + 1, link.length);
+      return link.substring(link.lastIndexOf("/") + 1, link.length);
     }
   },
   computed: {
@@ -100,6 +100,7 @@ export default {
       this.updateSelectedBoilerplateOption(e);
     },
     appendResource() {
+      this.$gtag.event("added new resource", { method: "Google" });
       if (
         this.resourceToAdd !== "" &&
         !this.fiddle.links.includes(this.resourceToAdd)
@@ -111,6 +112,7 @@ export default {
       }
     },
     removeResource(removedLink) {
+      this.$gtag.event("removed resource", { method: "Google" });
       const newLinks = this.fiddle.links.filter(link => link !== removedLink);
       this.updateFiddle({ links: newLinks });
     }

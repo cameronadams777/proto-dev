@@ -1,5 +1,8 @@
 <template>
-  <q-page class="register-page flex flex-center" @keydown.enter="attemptToRegisterNewUser">
+  <q-page
+    class="register-page flex flex-center"
+    @keydown.enter="attemptToRegisterNewUser"
+  >
     <q-card class="register-page__form-card">
       <img src="../assets/logo.png" class="register-page__form-logo" />
       <span class="register-page__form-title">Proto Dev</span>
@@ -155,6 +158,7 @@ export default {
           password: this.registrationForm.password
         };
         this.registerNewUser(payload);
+        this.$gtag.event("register", { method: "Google" });
       } catch (error) {
         this.$q.notify({ color: "danger", message: error.message });
       }
