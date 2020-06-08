@@ -30,6 +30,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media only screen and (max-width: 767px) {
+      width: 90%;
+    }
   }
 
   &__avatar {

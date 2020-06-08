@@ -100,11 +100,7 @@ export default {
     padding: 2rem;
     width: 25%;
 
-    @media only screen and (max-width: 640px) {
-      width: 75%;
-    }
-
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1023px) {
       width: 75%;
     }
   }

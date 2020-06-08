@@ -9,7 +9,7 @@
           round
         />
 
-        <q-toolbar-title></q-toolbar-title>
+        <q-toolbar-title>Proto Dev</q-toolbar-title>
 
         <q-btn
           v-if="onHomeRoute"
