@@ -1,5 +1,8 @@
 <template>
-  <q-page class="login-page flex flex-center" @keydown.enter="attemptToLogUserIn">
+  <q-page
+    class="login-page flex flex-center"
+    @keydown.enter="attemptToLogUserIn"
+  >
     <q-card class="login-page__form-card">
       <img src="../assets/logo.png" class="login-page__form-logo" />
       <span class="login-page__form-title">Proto Dev</span>
@@ -82,6 +85,7 @@ export default {
           password: this.loginForm.password
         };
         await this.loginUser(payload);
+        this.$gtag.event("login", { method: "Google" });
       } catch (error) {
         this.$q.notify({ color: "negative", message: error.message });
       }

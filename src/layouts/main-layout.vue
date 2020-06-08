@@ -37,10 +37,15 @@
     >
       <q-scroll-area class="fit">
         <q-list padding class="menu-list">
-          <q-item v-if="isLoggedIn" @click="$router.push('/profile')" clickable v-ripple>
+          <q-item
+            v-if="isLoggedIn"
+            @click="$router.push('/profile')"
+            clickable
+            v-ripple
+          >
             <q-item-section avatar>
               <q-avatar>
-                <Avatar :displayName="user.displayName"/>
+                <Avatar :displayName="user.displayName" />
               </q-avatar>
             </q-item-section>
 
@@ -48,7 +53,12 @@
               Cameron
             </q-item-section>
           </q-item>
-          <q-item v-if="!isLoggedIn" @click="$router.push('/login')" clickable v-ripple>
+          <q-item
+            v-if="!isLoggedIn"
+            @click="$router.push('/login')"
+            clickable
+            v-ripple
+          >
             <q-item-section avatar>
               <q-icon name="fas fa-sign-in-alt" />
             </q-item-section>
@@ -66,7 +76,12 @@
               Build
             </q-item-section>
           </q-item>
-          <q-item v-if="isLoggedIn" @click="logoutCurrentUser" clickable v-ripple>
+          <q-item
+            v-if="isLoggedIn"
+            @click="logoutCurrentUser"
+            clickable
+            v-ripple
+          >
             <q-item-section avatar>
               <q-icon name="fas fa-sign-in-alt" />
             </q-item-section>
@@ -93,7 +108,7 @@ import {
   userGetters,
   userActions
 } from "../store/helpers";
-import Avatar from '../components/avatar.vue'
+import Avatar from "../components/avatar.vue";
 export default {
   name: "MainLayout",
   components: {
@@ -119,6 +134,7 @@ export default {
     ...interfaceActions,
     ...userActions,
     runFiddle() {
+      this.$gtag.event("run-fiddle", { method: "Google" });
       this.$root.$emit("run-fiddle");
     },
     toggleFiddleSettingsModal() {
