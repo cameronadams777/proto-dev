@@ -38,11 +38,11 @@ export default function(/* { store, ssrContext } */) {
     else next();
   });
 
-  if (process.env.NODE_ENV === production) {
+  if (process.env.NODE_ENV === "production") {
     Vue.use(
       VueGtag,
       {
-        config: { id: "G-CP4BWHTE8R" },
+        config: { id: process.env.GOOGLE_ANALYTICS_ID },
         appName: "proto-dev",
         pageTrackerScreenviewEnabled: true
       },
