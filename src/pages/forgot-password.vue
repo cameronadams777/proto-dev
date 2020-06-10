@@ -73,8 +73,6 @@ export default {
           return;
         }
 
-        console.log(this.passwordResetForm.email)
-
         await firebase.auth().sendPasswordResetEmail(this.passwordResetForm.email)
         this.$gtag.event("password reset email sent", { method: "Google" });
       } catch (error) {

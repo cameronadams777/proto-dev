@@ -30,6 +30,8 @@ export default {
             displayName: payload.name
           });
 
+          await data.user.sendEmailVerification()
+
           dispatch("setUser", data.user);
         } catch (error) {
           reject(error);
