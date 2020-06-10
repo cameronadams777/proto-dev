@@ -7,7 +7,7 @@
 
 <script>
 import settingsJSON from "./app-files/settings.json";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { userActions } from "./store/helpers";
 import TheGlobalModal from "./components/the-global-modal";
 export default {

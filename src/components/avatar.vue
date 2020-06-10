@@ -14,6 +14,7 @@ export default {
   },
   computed: {
     displayInitials() {
+      if(!this.displayName) return ''
       const names = this.displayName.split(' ')
       const initials = names.map(name => name.substring(0, 1))
       return initials.join('')

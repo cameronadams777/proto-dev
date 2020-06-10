@@ -1,11 +1,12 @@
 <template>
-  <q-page class="profile-page flex flex-center">
+  <q-page class="profile-page flex column flex-center">
     <q-card class="profile-page__profile-card">
       <q-avatar class="profile-page__avatar">
         <Avatar :displayName="user.displayName"/>
       </q-avatar>
       <span class="profile-page__display-name">{{ user.displayName }}</span>
     </q-card>
+    <span class="profile-page__coming-soon">Coming Soon!</span>
   </q-page>
 </template>
 
@@ -43,6 +44,12 @@ export default {
   &__display-name {
     font-size: 1.25rem;
     font-weight: 700;
+  }
+
+  &__coming-soon {
+    margin-top: 2rem;
+    font-weight: 700;
+    font-size: 2rem;
   }
 }
 </style>
