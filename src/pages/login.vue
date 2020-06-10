@@ -39,7 +39,7 @@
         <span class="login-page__error">Password is required</span>
       </div>
       <div class="login-page__forgot-password-container">
-        <q-btn label="Forgot Password" flat @click="$router.push('/register')" />
+        <q-btn label="Forgot Password" flat @click="$router.push('/forgot-password')" />
       </div>
       <div class="flex">
         <q-btn color="black" label="Login" @click="attemptToLogUserIn" />
