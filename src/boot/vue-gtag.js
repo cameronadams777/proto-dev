@@ -1,9 +1,7 @@
 import Vue from "vue";
 import VueGtag from "vue-gtag";
 
-if (process.env.NODE_ENV === "production") {
-  Vue.use(VueGtag, {
-    config: { id: process.env.GOOGLE_ANALYTICS_ID },
-    appName: "proto-dev"
-  });
-}
+Vue.use(VueGtag, {
+  config: { id: process.env.GOOGLE_ANALYTICS_ID },
+  appName: "proto-dev"
+});

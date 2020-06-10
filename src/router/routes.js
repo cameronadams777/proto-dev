@@ -10,6 +10,11 @@ const routes = [
         meta: { guest: true }
       },
       {
+        path: "/forgot-password",
+        component: () => import("pages/forgot-password.vue"),
+        meta: { guest: true }
+      },
+      {
         path: "/register",
         component: () => import("pages/register.vue"),
         meta: { guest: true }

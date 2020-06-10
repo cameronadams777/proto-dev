@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import VueGtag from "vue-gtag";
 import firebase from "firebase/app";
-import 'firebase/auth';
+import "firebase/auth";
 
 import routes from "./routes";
 
@@ -39,17 +39,15 @@ export default function(/* { store, ssrContext } */) {
     else next();
   });
 
-  if (process.env.NODE_ENV === "production") {
-    Vue.use(
-      VueGtag,
-      {
-        config: { id: process.env.GOOGLE_ANALYTICS_ID },
-        appName: "proto-dev",
-        pageTrackerScreenviewEnabled: true
-      },
-      Router
-    );
-  }
+  Vue.use(
+    VueGtag,
+    {
+      config: { id: process.env.GOOGLE_ANALYTICS_ID },
+      appName: "proto-dev",
+      pageTrackerScreenviewEnabled: true
+    },
+    Router
+  );
 
   return Router;
 }
