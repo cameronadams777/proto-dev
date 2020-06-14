@@ -96,6 +96,7 @@ export default {
         password: this.confirmationModalForm.password
       };
       await this.deleteUserAccount(payload);
+      this.$gtag.event('user deleted account', { method: 'Google' })
       this.updateDisplayDeleteProfileConfirmationModal(false);
       this.$router.push("/");
     }
