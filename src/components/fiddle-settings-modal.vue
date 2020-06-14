@@ -98,6 +98,7 @@ export default {
     },
     selectBoilerplate(e) {
       this.updateSelectedBoilerplateOption(e);
+      this.$root.$emit("reset-editor");
     },
     appendResource() {
       this.$gtag.event("added new resource", { method: "Google" });

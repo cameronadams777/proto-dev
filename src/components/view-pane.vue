@@ -70,11 +70,7 @@ export default {
   },
   created() {
     this.initializeNewFiddle()
-  },
-  watch: {
-    fiddle() {
-      this.initializeNewFiddle();
-    }
+    this.$root.$on("reset-editor", () => this.initializeNewFiddle());
   },
   computed: {
     ...fiddleGetters
