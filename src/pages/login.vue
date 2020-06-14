@@ -72,7 +72,6 @@ export default {
       }
     }
   },
-
   methods: {
     ...userActions,
     async attemptToLogUserIn() {

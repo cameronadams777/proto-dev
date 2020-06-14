@@ -127,6 +127,11 @@ export default {
   height: 50vh;
   padding: 1rem;
 
+  @media (orientation: landscape) and (max-width: 1023px) {
+    width: 100vw;
+    height: 100vh;
+  }
+
   &__close-button {
     position: absolute;
     top: 5px;

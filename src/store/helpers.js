@@ -25,7 +25,8 @@ export const userActions = mapActions([
   "setUser",
   "registerNewUser",
   "loginUser",
-  "logoutCurrentUser"
+  "logoutCurrentUser",
+  "deleteUserAccount"
 ]);
 
 export const settingsGetters = {
@@ -40,10 +41,12 @@ export const settingsActions = mapActions(["updateSettings"]);
 export const interfaceGetters = {
   ...mapState({
     displayFiddleSettingsModal: state =>
-      state.interface.displayFiddleSettingsModal
+      state.interface.displayFiddleSettingsModal,
+    displayDeleteProfileConfirmationModal: state => state.interface.displayDeleteProfileConfirmationModal
   })
 };
 
 export const interfaceActions = mapActions([
-  "updateDisplayFiddleSettingsModal"
+  "updateDisplayFiddleSettingsModal",
+  "updateDisplayDeleteProfileConfirmationModal"
 ]);

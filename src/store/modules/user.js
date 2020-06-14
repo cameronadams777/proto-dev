@@ -33,6 +33,7 @@ export default {
           await data.user.sendEmailVerification()
 
           dispatch("setUser", data.user);
+          resolve();
         } catch (error) {
           reject(error);
         }
@@ -45,26 +46,40 @@ export default {
             .auth()
             .signInWithEmailAndPassword(payload.email, payload.password);
 
-          const user = {
-            
-          }
-
           dispatch("setUser", data.user);
+          resolve();
         } catch (error) {
           reject(error);
         }
       });
     },
-    logoutCurrentUser({ dispatch }) {
+    logoutCurrentUser({ dispatch }, payload) {
       return new Promise(async (resolve, reject) => {
         try {
           await firebase.auth().signOut();
 
           dispatch("setUser", false);
+          resolve();
         } catch (error) {
           reject(error);
         }
       });
+    },
+    deleteUserAccount({ state, dispatch }, payload) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const data = await firebase
+          .auth()
+          .signInWithEmailAndPassword(state.user.email, payload.password);
+
+          await data.user.delete();
+
+          dispatch("setUser", false);
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      })
     }
   }
 };
