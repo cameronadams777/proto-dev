@@ -116,7 +116,7 @@ export default {
   },
   data() {
     return {
-      displayDrawer: false
+      displayDrawer: true
     };
   },
   computed: {
