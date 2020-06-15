@@ -4,7 +4,7 @@
     @keydown.enter="attemptToRegisterNewUser"
   >
     <q-card class="register-page__form-card">
-      <img src="../assets/logo.png" class="register-page__form-logo" />
+      <Logo />
       <span class="register-page__form-title">Proto Dev</span>
       <q-input
         v-model="registrationForm.name"
@@ -110,7 +110,12 @@
 <script>
 import { required, sameAs, minLength, email } from "vuelidate/lib/validators";
 import { userActions } from "../store/helpers";
+import Logo from '../components/logo'
 export default {
+  name: 'RegisterPage',
+  components: {
+    Logo
+  },
   data() {
     return {
       registrationForm: {

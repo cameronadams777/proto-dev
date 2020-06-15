@@ -4,7 +4,7 @@
     @keydown.enter="attemptToLogUserIn"
   >
     <q-card class="forgot-password-page__form-card">
-      <img src="../assets/logo.png" class="forgot-password-page__form-logo" />
+      <Logo />
       <span class="forgot-password-page__form-title">Proto Dev</span>
       <q-input
         v-model="passwordResetForm.email"
@@ -42,11 +42,16 @@
 </template>
 
 <script>
+import Logo from '../components/logo';
 import { required, email } from "vuelidate/lib/validators";
 import { userActions } from "../store/helpers";
 import firebase from "firebase/app";
 import "firebase/auth";
 export default {
+  name: 'ForgotPasswordPage',
+  components: {
+    Logo
+  },
   data() {
     return {
       passwordResetForm: {
