@@ -4,7 +4,9 @@
     @keydown.enter="attemptToLogUserIn"
   >
     <q-card class="login-page__form-card">
-      <Logo />
+      <div class="login-page__form-logo-container">
+        <Logo />
+      </div>
       <span class="login-page__form-title">Proto Dev</span>
       <q-input
         v-model="loginForm.email"
@@ -112,8 +114,8 @@ export default {
     }
   }
 
-  &__form-logo {
-    width: 100px !important;
+  &__form-logo-container {
+    width: 175px !important;
     margin: 0 auto;
     margin-bottom: 1rem;
   }

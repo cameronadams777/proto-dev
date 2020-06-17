@@ -4,7 +4,9 @@
     @keydown.enter="attemptToRegisterNewUser"
   >
     <q-card class="register-page__form-card">
-      <Logo />
+      <div class="register-page__form-logo-container">
+        <Logo />
+      </div>
       <span class="register-page__form-title">Proto Dev</span>
       <q-input
         v-model="registrationForm.name"
@@ -183,8 +185,8 @@ export default {
     }
   }
 
-  &__form-logo {
-    width: 100px !important;
+  &__form-logo-container {
+    width: 175px !important;
     margin: 0 auto;
     margin-bottom: 1rem;
   }

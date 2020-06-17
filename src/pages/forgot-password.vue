@@ -4,7 +4,9 @@
     @keydown.enter="attemptToLogUserIn"
   >
     <q-card class="forgot-password-page__form-card">
-      <Logo />
+      <div class="forgot-password-page__form-logo-container">
+        <Logo />
+      </div>
       <span class="forgot-password-page__form-title">Proto Dev</span>
       <q-input
         v-model="passwordResetForm.email"
@@ -99,8 +101,8 @@ export default {
     }
   }
 
-  &__form-logo {
-    width: 100px !important;
+  &__form-logo-container {
+    width: 175px !important;
     margin: 0 auto;
     margin-bottom: 1rem;
   }
