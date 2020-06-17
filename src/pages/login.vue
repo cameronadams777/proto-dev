@@ -4,7 +4,9 @@
     @keydown.enter="attemptToLogUserIn"
   >
     <q-card class="login-page__form-card">
-      <img src="../assets/logo.png" class="login-page__form-logo" />
+      <div class="login-page__form-logo-container">
+        <Logo />
+      </div>
       <span class="login-page__form-title">Proto Dev</span>
       <q-input
         v-model="loginForm.email"
@@ -52,7 +54,12 @@
 <script>
 import { required, email } from "vuelidate/lib/validators";
 import { userActions } from "../store/helpers";
+import Logo from '../components/logo';
 export default {
+  name: 'LoginPage',
+  components: {
+    Logo
+  },
   data() {
     return {
       loginForm: {
@@ -107,8 +114,8 @@ export default {
     }
   }
 
-  &__form-logo {
-    width: 100px !important;
+  &__form-logo-container {
+    width: 175px !important;
     margin: 0 auto;
     margin-bottom: 1rem;
   }
