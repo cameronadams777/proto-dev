@@ -1,7 +1,9 @@
-import firebase from 'firebase/app'
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
-export default async () => {
-  const config = process.env.FIREBASE_CONFIG;
+const config = process.env.FIREBASE_CONFIG;
+const firebaseApp = firebase.initializeApp(config);
 
-  firebase.initializeApp(config);
-};
+export const firebaseAuth = firebaseApp.auth();
+export const firestore = firebaseApp.firestore();

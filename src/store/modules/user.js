@@ -1,5 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import { firebaseAuth, firestore } from '../../boot/firebase';
+
+const userCollection = firestore.collection('users');
 
 export default {
   state: {
@@ -16,14 +17,26 @@ export default {
     }
   },
   actions: {
+    getUserData({}, user) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const docRef = await userCollection.doc(user.uid).get();
+
+          const userRef = docRef.data();
+
+          resolve(userRef);
+        } catch(error) {
+          reject();
+        }
+      })
+    },
     setUser({ commit }, newValue) {
       commit("SET_USER", newValue);
     },
     registerNewUser({ dispatch }, payload) {
       return new Promise(async (resolve, reject) => {
         try {
-          const data = await firebase
-            .auth()
+          const data = await firebaseAuth
             .createUserWithEmailAndPassword(payload.email, payload.password);
 
           data.user.updateProfile({
@@ -32,7 +45,16 @@ export default {
 
           await data.user.sendEmailVerification()
 
-          dispatch("setUser", data.user);
+          const user = {
+            uid: data.user.uid,
+            displayName: data.user.displayName,
+            email: data.user.email,
+            prototypes: []
+          };
+
+          userCollection.doc(data.user.uid).set(user);
+
+          dispatch("setUser", user);
           resolve();
         } catch (error) {
           reject(error);
@@ -42,21 +64,29 @@ export default {
     loginUser({ dispatch }, payload) {
       return new Promise(async (resolve, reject) => {
         try {
-          const data = await firebase
-            .auth()
+          const data = await firebaseAuth
             .signInWithEmailAndPassword(payload.email, payload.password);
 
-          dispatch("setUser", data.user);
+          const docRef = await userCollection.doc(data.user.uid).get();
+
+          if(!docRef.exists) {
+            firebaseAuth.signOut();
+            throw Error('Oops, we could not find your user...')
+          }
+
+          const userRef = docRef.data();
+
+          dispatch("setUser", userRef);
           resolve();
         } catch (error) {
           reject(error);
         }
       });
     },
-    logoutCurrentUser({ dispatch }, payload) {
+    logoutCurrentUser({ dispatch }) {
       return new Promise(async (resolve, reject) => {
         try {
-          await firebase.auth().signOut();
+          await firebaseAuth.signOut();
 
           dispatch("setUser", false);
           resolve();
@@ -68,9 +98,8 @@ export default {
     deleteUserAccount({ state, dispatch }, payload) {
       return new Promise(async (resolve, reject) => {
         try {
-          const data = await firebase
-          .auth()
-          .signInWithEmailAndPassword(state.user.email, payload.password);
+          const data = await firebaseAuth
+            .signInWithEmailAndPassword(state.user.email, payload.password);
 
           await data.user.delete();
 
@@ -80,6 +109,17 @@ export default {
           reject(error);
         }
       })
+    },
+    addFiddleToPrototypes({ state, rootState, dispatch }) {
+      if(state.user.prototypes.find(prototype => prototype.uid === rootState.fiddle.fiddle.uid)) return;
+      const newUserValue = {
+        ...state.user,
+        prototypes: state.user.prototypes.concat(rootState.fiddle.fiddle)
+      };
+
+      userCollection.doc(state.user.uid).set(newUserValue);
+
+      dispatch('setUser', newUserValue)
     }
   }
 };

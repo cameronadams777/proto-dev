@@ -136,6 +136,7 @@ export default {
     runFiddle() {
       this.$gtag.event("run-fiddle", { method: "Google" });
       this.$root.$emit("run-fiddle");
+      this.addFiddleToPrototypes();
     },
     toggleFiddleSettingsModal() {
       this.updateDisplayFiddleSettingsModal(!this.displayFiddleSettingsModal);
