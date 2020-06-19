@@ -70,7 +70,7 @@ export default {
       });
     },
     selectPrototype(prototype) {
-      console.log(prototype)
+      this.$gtag.event('prototype seleced', { method: 'Google' })
       this.updateFiddle(prototype)
       this.$router.push('/')
     }
