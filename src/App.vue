@@ -19,7 +19,6 @@ export default {
   beforeCreate() {
     firebase.auth().onAuthStateChanged(async user => {
       const userData = await this.getUserData(user);
-      console.log(userData)
       this.setUser(userData || false);
       if (user && (this.$route.path === "/login" || this.$route.path === '/register')) {
         this.$router.replace("/");
