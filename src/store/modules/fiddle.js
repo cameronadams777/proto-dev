@@ -1,17 +1,17 @@
 import { boilerplates } from "../../constants";
+import uid from 'uid';
 
 // Default fiddle values to demostrate what each box in the UI is for. It is
 // stored here so that we can reset it when we need to.
 const defaultFiddle = {
-  babelrc: {
-    presets: []
-  },
+  uid: uid(),
   links: [],
   htmlCode: "<p>Hello World</p>",
   cssCode: "p { color: blue; }",
   javascriptCode: `// Check the console \n console.log('This is a test!')`,
   consoleOutput: [],
-  jsType: 'text/javascript'
+  jsType: "text/javascript",
+  private: false
 };
 
 export default {

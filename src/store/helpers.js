@@ -22,11 +22,13 @@ export const userGetters = {
 };
 
 export const userActions = mapActions([
+  "getUserData",
   "setUser",
   "registerNewUser",
   "loginUser",
   "logoutCurrentUser",
-  "deleteUserAccount"
+  "deleteUserAccount",
+  "addFiddleToPrototypes"
 ]);
 
 export const settingsGetters = {

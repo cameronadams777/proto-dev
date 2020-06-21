@@ -27,6 +27,7 @@
     "firebase": "^7.14.5",
     "lodash": "^4.17.15",
     "quasar": "^1.0.0",
+    "uid": "^1.0.0",
     "vue-codemirror": "^4.0.6",
     "vue-gtag": "^1.6.2",
     "vue-ua": "^1.7.0",

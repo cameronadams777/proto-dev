@@ -67,6 +67,20 @@
               Login
             </q-item-section>
           </q-item>
+          <q-item
+            v-if="!isLoggedIn"
+            @click="$router.push('/register')"
+            clickable
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="fas fa-user-plus" />
+            </q-item-section>
+
+            <q-item-section>
+              Register
+            </q-item-section>
+          </q-item>
           <q-item @click="$router.push('/')" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="fas fa-hammer" />
@@ -78,7 +92,7 @@
           </q-item>
           <q-item
             v-if="isLoggedIn"
-            @click="logoutCurrentUser"
+            @click="attemptToLogUserOut"
             clickable
             v-ripple
           >
@@ -136,9 +150,14 @@ export default {
     runFiddle() {
       this.$gtag.event("run-fiddle", { method: "Google" });
       this.$root.$emit("run-fiddle");
+      this.addFiddleToPrototypes();
     },
     toggleFiddleSettingsModal() {
       this.updateDisplayFiddleSettingsModal(!this.displayFiddleSettingsModal);
+    },
+    attemptToLogUserOut() {
+      this.logoutCurrentUser(),
+      this.$router.push('/')
     }
   }
 };
