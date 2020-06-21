@@ -92,7 +92,7 @@
           </q-item>
           <q-item
             v-if="isLoggedIn"
-            @click="logoutCurrentUser"
+            @click="attemptToLogUserOut"
             clickable
             v-ripple
           >
@@ -154,6 +154,10 @@ export default {
     },
     toggleFiddleSettingsModal() {
       this.updateDisplayFiddleSettingsModal(!this.displayFiddleSettingsModal);
+    },
+    attemptToLogUserOut() {
+      this.logoutCurrentUser(),
+      this.$router.push('/')
     }
   }
 };
