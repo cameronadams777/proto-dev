@@ -111,11 +111,21 @@ export default {
       })
     },
     addFiddleToPrototypes({ state, rootState, dispatch }) {
-      if(state.user.prototypes.find(prototype => prototype.uid === rootState.fiddle.fiddle.uid)) return;
-      const newUserValue = {
-        ...state.user,
-        prototypes: state.user.prototypes.concat(rootState.fiddle.fiddle)
-      };
+      let newUserValue;
+      let prototypes = state.user.prototypes;
+      if(state.user.prototypes.find(prototype => prototype.uid === rootState.fiddle.fiddle.uid)) {
+        const prototypeIndex = prototypes.findIndex(prototype => prototype.uid === rootState.fiddle.fiddle.uid);
+        prototypes[prototypeIndex] = rootState.fiddle.fiddle;
+        newUserValue = {
+          ...state.user,
+          prototypes
+        }
+      } else {
+        newUserValue = {
+          ...state.user,
+          prototypes: state.user.prototypes.concat(rootState.fiddle.fiddle)
+        };
+      }
 
       userCollection.doc(state.user.uid).set(newUserValue);
 
