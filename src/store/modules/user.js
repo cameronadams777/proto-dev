@@ -49,7 +49,8 @@ export default {
             uid: data.user.uid,
             displayName: data.user.displayName,
             email: data.user.email,
-            prototypes: []
+            prototypes: [],
+            pro: false
           };
 
           userCollection.doc(data.user.uid).set(user);
