@@ -1,7 +1,7 @@
 <template>
   <q-page
     class="forgot-password-page flex flex-center"
-    @keydown.enter="attemptToLogUserIn"
+    @keydown.enter="sendPasswordResetEmail"
   >
     <q-card class="forgot-password-page__form-card">
       <div class="forgot-password-page__form-logo-container">
@@ -44,13 +44,13 @@
 </template>
 
 <script>
-import Logo from '../components/logo';
+import Logo from "../components/logo";
 import { required, email } from "vuelidate/lib/validators";
 import { userActions } from "../store/helpers";
 import firebase from "firebase/app";
 import "firebase/auth";
 export default {
-  name: 'ForgotPasswordPage',
+  name: "ForgotPasswordPage",
   components: {
     Logo
   },
@@ -80,8 +80,15 @@ export default {
           return;
         }
 
-        await firebase.auth().sendPasswordResetEmail(this.passwordResetForm.email)
+        await firebase
+          .auth()
+          .sendPasswordResetEmail(this.passwordResetForm.email);
+        this.$q.notify({
+          message: "An email is on it's way!",
+          color: "positive"
+        });
         this.$gtag.event("password reset email sent", { method: "Google" });
+        this.$router.push("/login");
       } catch (error) {
         this.$q.notify({ color: "negative", message: error.message });
       }
